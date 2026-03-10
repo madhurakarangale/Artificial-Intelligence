@@ -1,0 +1,85 @@
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+import re
+import random
+from datetime import datetime
+
+print("=== Rule Based Chatbot ===")
+print("Type 'help' for questions or 'bye' to exit\n")
+
+name = ""
+
+rules = {
+    "hello|hi|hey": [
+        "Hello! How can I help you?",
+        "Hi there!",
+        "Hey! Nice to meet you."
+    ],
+
+    "what is ai|define ai": [
+        "AI means Artificial Intelligence. Machines can perform intelligent tasks."
+    ],
+
+    "what is pytho": [
+        "Python is a popular programming language used in AI and data science."
+    ],
+
+   "who created python": [
+        "Python was created by Guido van Rossum."
+    ],
+
+    "what is machine learning": [
+        "Machine Learning is a part of AI where computers learn from data."
+    ],
+
+    "what is data science": [
+        "Data Science is the process of getting useful information from data."
+    ],
+
+    "what is chatbot": [
+        "A chatbot is a program that talks with users automatically."
+    ]
+}
+
+unknown = [
+    "Sorry, I don't understand.",
+    "Please ask about AI or Python.",
+    "Try another question."
+]
+
+while True:
+
+    user = input("You: ").lower()
+
+    if re.search("bye|exit|quit", user):
+        print("Bot: Goodbye!")
+        break
+
+    elif "help" in user:
+        print("Bot: Ask questions like:")
+        print("What is AI")
+        print("What is Python")
+        print("Who created Python")
+        print("What is Machine Learning")
+        print("And other Related to AI and Python........")
+
+    elif "my name is" in user:
+        name = user.replace("my name is", "").strip()
+        print("Bot: Nice to meet you", name)
+
+    elif "what is my name" in user:
+        if name:
+            print("Bot: Your name is", name)
+        else:
+            print("Bot: I don't know your name yet.")
+
+    else:
+        found = False
+        for pattern in rules:
+            if re.search(pattern, user):
+                print("Bot:", random.choice(rules[pattern]))
+                found = True
+                break
+
+        if not found:
+            print("Bot:", random.choice(unknown))
