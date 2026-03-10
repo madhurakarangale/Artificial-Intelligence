@@ -1,2 +1,2 @@
 # Artificaial-Inteliigence-
-this repository contain all the practical codes including the TAE 1 project.
+This repository contains :<br> 1.Practical Codes <br> 2.TAE 1 project.
