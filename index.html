@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule Based Chatbot - IT Support</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header with exact Python formatting -->
+        <div class="header">
+            <pre class="ascii-header">
+------------------------------------------------------------
+RULE BASED CHATBOT
+------------------------------------------------------------
+            </pre>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Left Sidebar -->
+            <div class="left-sidebar">
+                <!-- AI Technology Panel - Static -->
+                <div class="ai-tech-panel">
+                    <h3>🤖 AI TECHNOLOGY USED</h3>
+                    <div class="ai-tech-content">
+                        <div class="ai-tech-badge"><b>RULE-BASED SYSTEM</b></div>
+                        <div class="ai-tech-details">
+                            <p><span class="tech-label">Algorithm:</span> <span>Pattern Matching with Regular
+                                    Expressions</span></p>
+                            <p><span class="tech-label">Technique:</span> <span>Keyword Spotting & Intent
+                                    Classification</span></p>
+                            <p><span class="tech-label">Knowledge Rep:</span><span>If-Else Decision Rules</span> </p>
+                            <p><span class="tech-label">Processing:</span> <span>Deterministic Logic Tree</span></p>
+                        </div>
+                        <div class="ai-tech-desc">
+                            <strong>How it works:</strong> User input is analyzed using keyword matching.
+                            The system follows predefined rules to identify the intent and provides
+                            corresponding pre-programmed responses. Pure rule-based AI.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Section -->
+            <div class="chat-section">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Welcome Message with help options -->
+                    <div class="message bot-message">
+                        <div class="message-content">
+                            <strong>🤖 Bot:</strong>
+                            <pre class="bot-output">
+I CAN HELP WITH:
+- Password issues
+- Network problems
+- Email troubles
+- Software installation
+- Printer support
+
+Type your question below (or 'exit' to quit)
+------------------------------------------------------------
+                            </pre>
+                        </div>
+                        <div class="message-time">Just now</div>
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-container">
+                    <span class="prompt">You:</span>
+                    <input type="text" id="userInput" class="chat-input" placeholder="Type your question here..."
+                        onkeypress="handleKeyPress(event)">
+                    <button class="send-btn" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+
+            <!-- Right Sidebar Container -->
+            <div class="right-sidebar">
+                <!-- Stats Panel - Scrollable -->
+                <div class="stats-sidebar">
+                    <div class="stats-panel">
+                        <h3>📊 SESSION STATISTICS</h3>
+                        <div class="stat-item">
+                            <span>Total Queries:</span>
+                            <span class="stat-value" id="queryCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Auto-resolved:</span>
+                            <span class="stat-value" id="resolvedCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Escalated:</span>
+                            <span class="stat-value" id="escalatedCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Resolution Rate:</span>
+                            <span class="stat-value" id="resolutionRate">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="quick-help">
+                        <h3>🔍 QUICK HELP</h3>
+                        <div class="help-buttons-grid">
+                            <button class="help-btn" onclick="sendQuickQuery('password reset')">🔐 Password
+                                Reset</button>
+                            <button class="help-btn" onclick="sendQuickQuery('wifi not working')">🌐 Network
+                                Issues</button>
+                            <button class="help-btn" onclick="sendQuickQuery('email problem')">📧 Email
+                                Troubles</button>
+                            <button class="help-btn" onclick="sendQuickQuery('install software')">💻 Software
+                                Install</button>
+                            <button class="help-btn" onclick="sendQuickQuery('printer not working')">🖨️ Printer
+                                Support</button>
+                            <button class="help-btn" onclick="sendQuickQuery('vpn connect')">🔒 VPN Access</button>
+                            <button class="help-btn" onclick="sendQuickQuery('account locked')">🔓 Account
+                                Locked</button>
+                            <button class="help-btn" onclick="sendQuickQuery('slow computer')">⚡ Slow Computer</button>
+                        </div>
+                    </div>
+
+                    <button class="reset-btn" onclick="resetChat()">
+                        🔄 New Session
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
