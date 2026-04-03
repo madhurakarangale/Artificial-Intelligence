@@ -1,0 +1,190 @@
+ print("-" * 60)
+print("RULE BASED CHATBOT")
+print("-" * 60)
+
+# Session tracking variables
+session_active = True
+query_count = 0
+resolved_count = 0
+escalated_count = 0
+
+print("\nI CAN HELP WITH:")
+print("-Password issues")
+print("-Network problems")
+print("-Email troubles")
+print("-Software installation")
+print("-Printer support")
+print("\nType your question below (or 'exit' to quit)")
+print("-" * 60)
+
+# Main conversation loop
+while session_active:
+    
+    # Get user input
+    user_input = input("\nYou: ").strip().lower()
+    
+    # exit
+    if user_input == "exit" or  user_input =="quit"or user_input ==  "bye":
+        print("\nSESSION SUMMARY")
+        print(f"\t\t\tTotal queries: {query_count}")
+        print(f"\t\t\tAuto-resolved: {resolved_count}")
+        print(f"\t\t\tEscalated: {escalated_count}")
+        print("\nThank you.Goodbye!")
+        break
+    
+    # Skip empty input
+    if user_input == "":
+        print("Bot: Please type your question.")
+        continue
+    
+    # Track query
+    query_count = query_count + 1
+    matched = False
+    response = ""
+    
+    print("Bot: ", end="")
+    
+    # ===== PATTERN MATCHING RULES =====
+    
+    # 1. PASSWORD RESET RULE
+    if ("password" in user_input or "login"in user_input  or "log in" in user_input) and \
+       ("reset"in user_input or "forgot" in user_input or "change"in user_input  or "issues "in user_input  or "can't" in user_input):
+        
+        matched = True
+        resolved_count = resolved_count + 1
+        
+        print("PASSWORD RESET STEPS:")
+        print()
+        print("1. Go to https://password.company.com")
+        print("2. Click 'Forgot Password'")
+        print("3. Enter your employee ID")
+        print("4. Check SMS/Email for verification code")
+        print("5. Create new password (minimum 8 characters)")
+        print()
+        print("Password reset usually takes 2-3 minutes")
+    
+    # 2. NETWORK ISSUES RULE
+    elif ("wifi" in user_input or "internet" in user_input or "network" in user_input) and \
+         ("not working"in user_input or "down"in user_input or "slow"in user_input or "issue"in user_input  or "problem "in user_input  or  "connect" in user_input):
+        
+        matched = True
+        resolved_count = resolved_count + 1
+        
+        print("NETWORK TROUBLESHOOTING:")
+        print("1. Toggle WiFi OFF and ON")
+        print("2. Open Command Prompt and type: ipconfig /release")
+        print("3. Then type: ipconfig /renew")
+        print("4. Try: ping google.com to test connection")
+        print("5. Check if other devices are working")
+        print()
+        print("Network Status: https://status.company.com")
+    
+    # 3. EMAIL ISSUES RULE
+    elif ("email"in user_input or "outlook"in user_input or "mail" in user_input or "Email"in user_input ) and \
+         ("not sending"in user_input  or "not receiving"in user_input or "error"in user_input or "problem" in user_input or "troubles"in user_input ):
+        
+        matched = True
+        resolved_count = resolved_count + 1
+
+        print("EMAIL TROUBLESHOOTING:")
+        print("1. Check if you're connected to the internet")
+        print("2. Verify your mailbox isn't full")
+        print("3. Restart Outlook/Email application")
+        print("4. Check email server status")
+        print("5. Try webmail: https://webmail.company.com")
+        print()
+        print("Email services are usually restored within 15 minutes")
+    
+    # 4. SOFTWARE INSTALLATION RULE
+    elif ("install"in user_input or "update" in user_input) and \
+         ("software"in user_input or "application"in user_input or "program" in user_input):
+        
+        matched = True
+        resolved_count = resolved_count + 1
+        
+        print("SOFTWARE INSTALLATION:")
+        print("1. Go to Company Software Portal: https://software.company.com")
+        print("2. Login with your company credentials")
+        print("3. Search for the software you need")
+        print("4. Click 'Request Installation'")
+        print("5. IT team will approve within 2-4 hours")
+        print()
+        print("Approved software list is available on the portal")
+    
+    # 5. PRINTER ISSUES RULE
+    elif ("printer"in user_input or "print" in user_input)  and \
+         ("not working"in user_input or "error"in user_input or "jam" in user_input or "paper" in user_input or "support"in user_input ):
+        
+        matched = True
+        resolved_count = resolved_count + 1
+
+        print("PRINTER TROUBLESHOOTING:")
+        print("1. Check if printer has paper and toner")
+        print("2. Clear any paper jams")
+        print("3. Restart the printer (power off/on)")
+        print("4. Clear print queue on your computer")
+        print("5. Check printer connection:")
+        print()
+        print("Printer support: ext. 1234 if issues persist")
+    
+    # 6. VPN ACCESS RULE
+    elif ("vpn" in user_input or "remote access"in user_input in user_input) and \
+         ("connect" in user_input or "not working"in user_input or "not" in user_input):
+        
+        matched = True
+        resolved_count = resolved_count + 1
+
+        print("VPN CONNECTION STEPS:")
+        print("1. Open Cisco AnyConnect/Company VPN client")
+        print("2. Enter: vpn.company.com as the server address")
+        print("3. Login with your company credentials")
+        print("4. Select 'Split Tunnel' or 'Full Tunnel' as needed")
+        print("5. If connection fails, try: vpn2.company.com")
+        print()
+        print("Two-factor authentication may be required")
+    
+    # 7. ACCOUNT LOCKOUT RULE
+    elif ("account locked"in user_input or "locked out" in user_input) or \
+         ("can't login" in user_input and "locked" in user_input):
+        
+        matched = True
+        resolved_count = resolved_count + 1
+
+        print("ACCOUNT UNLOCK PROCESS:")
+        print("1. Account locks automatically after 5 failed attempts")
+        print("2. Wait 15 minutes for auto-unlock")
+        print("3. Or visit: https://account.company.com/unlock")
+        print("4. Contact IT Helpdesk at ext. 1234 for immediate unlock")
+        print("5. Change your password if you don't remember it")
+    
+    # 8. SLOW COMPUTER RULE
+    elif ("slow"in user_input or "lag" in user_input) and \
+         ("computer"in user_input or "laptop"in user_input or "pc" in user_input):
+        
+        matched = True
+        resolved_count = resolved_count + 1
+
+        print("PERFORMANCE TIPS:")
+        print("1. Close unnecessary browser tabs")
+        print("2. Restart your computer (fixes 80% of issues)")
+        print("3. Check disk space - need at least 10% free")
+        print("4. Run disk cleanup: cleanmgr.exe")
+        print("5. Check for Windows updates")
+        print()
+        print("IT recommends restarting daily")
+    
+    # 9. NO MATCH - ESCALATE
+    else:
+        matched = False
+        escalated_count = escalated_count + 1
+        print("I DO NOT UNDERSTAND!!")
+    
+    # Show ticket summary for every query
+    print("-" * 40)
+    print(f"Status: {'RESOLVED' if matched else 'ESCALATED'}")
+    print("-" * 40)
+
+# End of program
+print("\n" + "=" * 60)
+print("\t\t\t\t\t\tSESSION ENDED")
+print("=" * 60)
